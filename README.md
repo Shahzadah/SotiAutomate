@@ -1,7 +1,7 @@
 # SotiAutomate
-To automate app deployment
+** To automate app deployment **
 
-##Steps
+## Steps
 - Open files/deployment.xls sheet and add all store numbers where app would be deployed 
 - Open Config.java file
 - Add profile name to be deployed
