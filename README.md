@@ -1,5 +1,5 @@
 # SotiAutomate
-** To automate app deployment **
+**To automate app deployment**
 
 ## Steps
 - Open files/deployment.xls sheet and add all store numbers where app would be deployed 
