@@ -1,4 +1,4 @@
-package test.automate.main;
+package com.soti.automate;
 
 import java.io.File;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import test.automate.main.LoadDriver.DriverType;
+import com.soti.automate.LoadDriver.DriverType;
 
 public class Main {
 

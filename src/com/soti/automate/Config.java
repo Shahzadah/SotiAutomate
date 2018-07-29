@@ -1,4 +1,4 @@
-package test.automate.main;
+package com.soti.automate;
 
 public interface Config {
 

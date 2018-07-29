@@ -1,4 +1,4 @@
-package test.automate.main;
+package com.soti.automate;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
