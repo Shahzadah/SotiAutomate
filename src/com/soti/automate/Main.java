@@ -96,12 +96,10 @@ public class Main {
 								element.click();
 								System.out.println(storeDetails);
 							} else {
-								System.out.println(storeDetails + " is already checked"); // Log error: If checkbox is
-																							// already checked
+								System.out.println(storeDetails + " is already checked"); // Log error: If checkbox is already checked
 							}
 						} else {
-							if (!element.getAttribute("class").contains("checkbox-0")) { // If checkbox is checked, then
-																							// un-check
+							if (!element.getAttribute("class").contains("checkbox-0")) { // If checkbox is checked, then un-check
 								((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(true);",
 										element);
 								try {
@@ -111,8 +109,7 @@ public class Main {
 								element.click();
 								System.out.println(storeDetails);
 							} else {
-								System.out.println(storeDetails + " is already un-checked"); // Log error: If checkbox
-																								// is already unchecked
+								System.out.println(storeDetails + " is already un-checked"); // Log error: If checkbox is already unchecked
 							}
 						}
 					} catch (org.openqa.selenium.WebDriverException e) {
@@ -174,8 +171,8 @@ public class Main {
 		WebElement element = null;
 		webDriver = LoadDriver.load(DriverType.Chrome);
 		webDriver.get("https://mdmmgmt.global.tesco.org/MobiControl/WebConsole/Home");
-		webDriver.findElement(By.id("userName")).sendKeys("geq5");
-		webDriver.findElement(By.id("password")).sendKeys("Tesco012345");
+		webDriver.findElement(By.id("userName")).sendKeys(Config.LOGIN_USERNAME);
+		webDriver.findElement(By.id("password")).sendKeys(Config.LOGIN_PASSWORD);
 		webDriver.findElement(By.id("btn-login")).click();
 
 		System.out.println("Login is in progress...");
@@ -197,10 +194,8 @@ public class Main {
 		System.out.println("Profiles are loaded");
 
 		if (!isProfileShowingNow()) {
-			String keyWord = Config.PROFILE_XPATH.substring(Config.PROFILE_XPATH.lastIndexOf('-') + 1,
-					Config.PROFILE_XPATH.length());
-			keyWord = keyWord.substring(0,
-					(keyWord.contains("v") ? keyWord.lastIndexOf("v") : keyWord.lastIndexOf("V")) - 1);
+			String keyWord = Config.PROFILE_XPATH.substring(Config.PROFILE_XPATH.lastIndexOf('-') + 1, Config.PROFILE_XPATH.length());
+			keyWord = keyWord.substring(0, (keyWord.contains("v") ? keyWord.lastIndexOf("v") : keyWord.lastIndexOf("V")) - 1);
 			webDriver.findElement(By.id("ext-comp-1198")).sendKeys(keyWord);
 			System.out.println("Desired profile not visible and is getting loaded...");
 			waitForProfileToLoad();
@@ -217,6 +212,8 @@ public class Main {
 
 		System.out.println("Assignment is started...\n");
 		startAssignment();
+		
+		System.out.println("Assignment completed.");
 		// webDriver.close();
 	}
 }
