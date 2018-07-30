@@ -2,9 +2,10 @@ package com.soti.automate;
 
 public interface Config {
 
-	String PROFILE_XPATH = "//TD[@class='text-ellipsis'][text()='[UKROI][Store Stock][STG-PRD]-[PKG]-Reductions V2_0_23']";
-	String EXCEL_FILE_TO_BE_DEPLOYED = "/Users/shababu/eclipse-workspace/MobiAutomate/files/deployment.xls";
-	String LOGIN_USERNAME = "geq5";//tpx Id
-	String LOGIN_PASSWORD = "xxxxx";//password
-	boolean IS_ASSIGN = false;
+	boolean IS_ASSIGN = true;
+	String PROFILE_NAME = "[UKROI]-[Store Stock]-[STG-PILOT]-[PKG]-Waste v1_0_24";
+	String LOGIN_USERNAME = "xxxx";//tpx Id
+	String LOGIN_PASSWORD = "xxxxxxx";//password
+	String SOTI_BASE_URL = "https://mdmmgmt.xxx.xxx.org/MobiControl/WebConsole/Home";
+	String EXCEL_FILE_TO_BE_DEPLOYED = "./files/deployment.xls";
 }

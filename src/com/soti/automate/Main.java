@@ -23,6 +23,7 @@ import com.soti.automate.LoadDriver.DriverType;
 public class Main {
 
 	private static WebDriver webDriver;
+	private static String PROFILE_XPATH = "//TD[@class='text-ellipsis'][text()='"+Config.PROFILE_NAME+"']";
 
 	private static void waitUntilProfileLoaded() {
 		WebDriverWait wait = new WebDriverWait(webDriver, 60);
@@ -35,7 +36,7 @@ public class Main {
 
 	private static boolean isProfileShowingNow() {
 		try {
-			((JavascriptExecutor)webDriver).executeScript("arguments[0].scrollIntoView(true);", webDriver.findElement(By.xpath(Config.PROFILE_XPATH)));
+			((JavascriptExecutor)webDriver).executeScript("arguments[0].scrollIntoView(true);", webDriver.findElement(By.xpath(PROFILE_XPATH)));
 			return true;
 		} catch (Exception exc) {
 			return false;
@@ -44,13 +45,13 @@ public class Main {
 
 	private static void waitForProfileToLoad() {
 		WebDriverWait wait = new WebDriverWait(webDriver, 60);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Config.PROFILE_XPATH)));
-		WebElement element = webDriver.findElement(By.xpath(Config.PROFILE_XPATH));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PROFILE_XPATH)));
+		WebElement element = webDriver.findElement(By.xpath(PROFILE_XPATH));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	private static void rightClickOnDesiredProfile() {
-		WebElement element = webDriver.findElement(By.xpath(Config.PROFILE_XPATH));
+		WebElement element = webDriver.findElement(By.xpath(PROFILE_XPATH));
 		Actions action = new Actions(webDriver);
 		action.moveToElement(element);
 		action.contextClick(element).build().perform(); /* this will perform right click */
@@ -62,7 +63,7 @@ public class Main {
 		WebDriverWait wait = new WebDriverWait(webDriver, 60);
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//SPAN[@unselectable='on'][text()='2001 PITTODRIE EXPRESS']")));
-		WebElement element = webDriver.findElement(By.xpath(Config.PROFILE_XPATH));
+		WebElement element = webDriver.findElement(By.xpath(PROFILE_XPATH));
 		wait.until(ExpectedConditions.visibilityOf(element));
 		try { Thread.sleep(2000); } catch (Exception exc) { }
 	}
@@ -167,10 +168,10 @@ public class Main {
 		return storeDetails;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		WebElement element = null;
 		webDriver = LoadDriver.load(DriverType.Chrome);
-		webDriver.get("https://mdmmgmt.global.tesco.org/MobiControl/WebConsole/Home");
+		webDriver.get(Config.SOTI_BASE_URL);
 		webDriver.findElement(By.id("userName")).sendKeys(Config.LOGIN_USERNAME);
 		webDriver.findElement(By.id("password")).sendKeys(Config.LOGIN_PASSWORD);
 		webDriver.findElement(By.id("btn-login")).click();
@@ -194,7 +195,7 @@ public class Main {
 		System.out.println("Profiles are loaded");
 
 		if (!isProfileShowingNow()) {
-			String keyWord = Config.PROFILE_XPATH.substring(Config.PROFILE_XPATH.lastIndexOf('-') + 1, Config.PROFILE_XPATH.length());
+			String keyWord = PROFILE_XPATH.substring(PROFILE_XPATH.lastIndexOf('-') + 1, PROFILE_XPATH.length());
 			keyWord = keyWord.substring(0, (keyWord.contains("v") ? keyWord.lastIndexOf("v") : keyWord.lastIndexOf("V")) - 1);
 			webDriver.findElement(By.id("ext-comp-1198")).sendKeys(keyWord);
 			System.out.println("Desired profile not visible and is getting loaded...");
